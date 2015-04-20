@@ -66,7 +66,7 @@
 		2FF3CC5C1ADD357500721FD0 = {
 			isa = PBXGroup;
 			children = (
-				2FF3CC671ADD357600721FD0 /* Animations */,
+				2FF3CC671ADD357600721FD0 /* DKTypeWritterLabel */,
 				2FF3CC811ADD357600721FD0 /* AnimationsTests */,
 				2FF3CC661ADD357600721FD0 /* Products */,
 			);
@@ -81,7 +81,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2FF3CC671ADD357600721FD0 /* Animations */ = {
+		2FF3CC671ADD357600721FD0 /* DKTypeWritterLabel */ = {
 			isa = PBXGroup;
 			children = (
 				2FF3CC6C1ADD357600721FD0 /* AppDelegate.h */,
@@ -95,6 +95,7 @@
 				2FF3CC771ADD357600721FD0 /* LaunchScreen.xib */,
 				2FF3CC681ADD357600721FD0 /* Supporting Files */,
 			);
+			name = DKTypeWritterLabel;
 			path = Animations;
 			sourceTree = "<group>";
 		};
