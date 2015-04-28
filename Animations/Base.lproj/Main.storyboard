@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pb3-H9-E0I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pb3-H9-E0I">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,8 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PT-jW-Lrz" customClass="DKTypeWritterLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PT-jW-Lrz" userLabel="Label #1" customClass="DKTypeWritterLabel">
+                                <rect key="frame" x="279" y="188" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwi-T7-8jR" userLabel="Label #2" customClass="DKTypeWritterLabel">
                                 <rect key="frame" x="279" y="290" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qd-qp-gvG" userLabel="Label #3" customClass="DKTypeWritterLabel">
+                                <rect key="frame" x="279" y="392" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -26,16 +39,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1PT-jW-Lrz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="15" id="1Pr-u4-ieJ"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1PT-jW-Lrz" secondAttribute="bottom" constant="15" id="BWZ-5b-gzL"/>
+                            <constraint firstItem="dwi-T7-8jR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="15" id="3y3-fj-e7y"/>
+                            <constraint firstItem="dwi-T7-8jR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1PT-jW-Lrz" secondAttribute="bottom" constant="15" id="Bwq-Ii-8Au"/>
+                            <constraint firstItem="6qd-qp-gvG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dwi-T7-8jR" secondAttribute="bottom" constant="15" id="GAz-U1-UH9"/>
+                            <constraint firstItem="6qd-qp-gvG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="15" id="S6Z-2Q-BXv"/>
+                            <constraint firstItem="6qd-qp-gvG" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" multiplier="1.34" id="TKB-rw-dRp"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6qd-qp-gvG" secondAttribute="bottom" constant="15" id="VnF-dF-sor"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dwi-T7-8jR" secondAttribute="trailing" constant="15" id="bqg-Ks-rwq"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1PT-jW-Lrz" secondAttribute="trailing" constant="15" id="hfY-Rc-How"/>
                             <constraint firstAttribute="centerX" secondItem="1PT-jW-Lrz" secondAttribute="centerX" id="lDt-BR-7Zc"/>
-                            <constraint firstAttribute="centerY" secondItem="1PT-jW-Lrz" secondAttribute="centerY" id="rn6-kR-d10"/>
+                            <constraint firstAttribute="centerX" secondItem="6qd-qp-gvG" secondAttribute="centerX" id="qxr-0w-IN4"/>
+                            <constraint firstItem="1PT-jW-Lrz" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" multiplier="0.66" id="rn6-kR-d10"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6qd-qp-gvG" secondAttribute="trailing" constant="15" id="t9d-sQ-Jo6"/>
+                            <constraint firstAttribute="centerY" secondItem="dwi-T7-8jR" secondAttribute="centerY" id="whH-35-lEX"/>
                             <constraint firstItem="1PT-jW-Lrz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="15" id="xcJ-yM-VhD"/>
+                            <constraint firstAttribute="centerX" secondItem="dwi-T7-8jR" secondAttribute="centerX" id="ziH-I2-gHA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Kc2-Dy-Z7O"/>
                     <connections>
                         <outlet property="testLabel" destination="1PT-jW-Lrz" id="afM-pd-hax"/>
+                        <outlet property="testLabel2" destination="dwi-T7-8jR" id="1vH-r6-WCe"/>
+                        <outlet property="testLabel3" destination="6qd-qp-gvG" id="V1H-GQ-eKp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

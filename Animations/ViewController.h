@@ -12,6 +12,8 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet DKTypeWritterLabel *testLabel;
+@property (weak, nonatomic) IBOutlet DKTypeWritterLabel *testLabel2;
+@property (weak, nonatomic) IBOutlet DKTypeWritterLabel *testLabel3;
 
 @end
 

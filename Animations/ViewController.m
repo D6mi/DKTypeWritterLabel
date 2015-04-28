@@ -28,7 +28,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(test)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(openSpeedPicker)];
     
-    self.testLabel.text = @"";
+    self.testLabel.text = self.testLabel2.text = self.testLabel3.text = @"";
     
     self.texts = @[@"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                    @"This is another text, about life, death, love and donuts.",
@@ -46,10 +46,29 @@
 
 - (void)test {
     NSUInteger randomIndex = arc4random() % [self.texts count];
+    NSInteger randomSpeed = arc4random() % 5;
     
     [self.testLabel setText:[self.texts objectAtIndex:randomIndex]
                    animated:YES
          withAnimationSpeed:self.animationsSpeed
+                 completion:^{
+                     NSLog(@"%@ is logging from within.", [self class]);
+                 }];
+    
+    randomIndex = arc4random() % [self.texts count];
+    randomSpeed = arc4random() % 5;
+    [self.testLabel2 setText:[self.texts objectAtIndex:randomIndex]
+                   animated:YES
+         withAnimationSpeed:randomSpeed
+                 completion:^{
+                     NSLog(@"%@ is logging from within.", [self class]);
+                 }];
+    
+    randomIndex = arc4random() % [self.texts count];
+    randomSpeed = arc4random() % 5;
+    [self.testLabel3 setText:[self.texts objectAtIndex:randomIndex]
+                   animated:YES
+         withAnimationSpeed:randomSpeed
                  completion:^{
                      NSLog(@"%@ is logging from within.", [self class]);
                  }];
