@@ -26,6 +26,7 @@
 
 #import "DKTypeWritterLabel.h"
 
+#define TYPEWRITTER_SPEED_VERY_FAST 0.025
 #define TYPEWRITTER_SPEED_FAST 0.05
 #define TYPEWRITTER_SPEED_NORMAL 0.08
 #define TYPEWRITTER_SPEED_SLOW 0.2
@@ -79,6 +80,9 @@ typedef void(^AnimationBlock)(void);
             break;
         case DKTypewritterLabelAnimationSpeedFast:
             speed = TYPEWRITTER_SPEED_FAST;
+            break;
+        case DKTypewritterLabelAnimationSpeedVeryFast:
+            speed = TYPEWRITTER_SPEED_VERY_FAST;
             break;
         default:
             break;

@@ -30,7 +30,8 @@ typedef NS_ENUM(NSInteger, DKTypewritterLabelAnimationSpeed) {
     DKTypewritterLabelAnimationSpeedVerySlow,
     DKTypewritterLabelAnimationSpeedSlow,
     DKTypewritterLabelAnimationSpeedNormal,
-    DKTypewritterLabelAnimationSpeedFast
+    DKTypewritterLabelAnimationSpeedFast,
+    DKTypewritterLabelAnimationSpeedVeryFast
 };
 
 @interface DKTypeWritterLabel : UILabel
