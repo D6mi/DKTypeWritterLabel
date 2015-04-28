@@ -35,6 +35,8 @@
                    @"Regarding Nietsche, he's a fucker.",
                    @"I totally agree with your methods of acquisition dear Gerald.",
                    @"Bleh, blah, bloh, GET AWAY!"];
+    
+    [self speedToTitle];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,10 +78,16 @@
         [self speedToTitle];
     }];
     
+    UIAlertAction *veryFastAction = [UIAlertAction actionWithTitle:@"Very Fast" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        self.animationsSpeed = DKTypewritterLabelAnimationSpeedVeryFast;
+        [self speedToTitle];
+    }];
+    
     [controller addAction:verySlowAction];
     [controller addAction:slowAction];
     [controller addAction:normalAction];
     [controller addAction:fastAction];
+    [controller addAction:veryFastAction];
     
     [self presentViewController:controller animated:YES completion:nil];
 }
@@ -98,10 +106,13 @@
         case DKTypewritterLabelAnimationSpeedFast:
             self.navigationItem.title = @"Fast";
             break;
+        case DKTypewritterLabelAnimationSpeedVeryFast:
+            self.navigationItem.title = @"Very Fast";
+            break;
         default:
             break;
     }
-
+    
 }
 
 @end

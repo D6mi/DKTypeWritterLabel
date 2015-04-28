@@ -59,7 +59,7 @@
             BlueprintIdentifier = "2FF3CC641ADD357600721FD0"
             BuildableName = "DKTypeWritterLabel.app"
             BlueprintName = "DKTypeWritterLabel"
-            ReferencedContainer = "container:Animations.xcodeproj">
+            ReferencedContainer = "container:DKTypeWritterLabel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -79,7 +79,7 @@
             BlueprintIdentifier = "2FF3CC641ADD357600721FD0"
             BuildableName = "DKTypeWritterLabel.app"
             BlueprintName = "DKTypeWritterLabel"
-            ReferencedContainer = "container:Animations.xcodeproj">
+            ReferencedContainer = "container:DKTypeWritterLabel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

@@ -37,6 +37,7 @@ typedef void(^AnimationBlock)(void);
 
 @interface DKTypeWritterLabel ()
 
+@property (weak, nonatomic) NSString *originalText;
 @property (strong, nonatomic) NSMutableArray *characters;
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -49,6 +50,12 @@ typedef void(^AnimationBlock)(void);
 - (void)setText:(NSString *)text animated:(BOOL)animated withAnimationSpeed:(DKTypewritterLabelAnimationSpeed)animationSpeed completion:(void (^)())completion {
     [super setText:@""];
     
+    self.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancel)];
+    [self addGestureRecognizer:tapRecognizer];
+    
+    self.originalText = text;
     self.animationBlock = completion;
     
     if(self.timer) {
@@ -92,9 +99,12 @@ typedef void(^AnimationBlock)(void);
     self.timer = [NSTimer scheduledTimerWithTimeInterval:speed target:self selector:@selector(sequentialSetText) userInfo:nil repeats:YES];
 }
 
+/**
+ Called by the timer every x seconds. Adds one characters (from the characters array) to the Label's text.
+ */
 - (void)sequentialSetText {
     if([self.characters count] == 0) {
-        [self.timer invalidate];
+        [self reset];
         
         if(self.animationBlock) {
             self.animationBlock();
@@ -109,6 +119,28 @@ typedef void(^AnimationBlock)(void);
     NSString *text = [self.text stringByAppendingString:character];
     
     self.text = text;
+}
+
+- (void)cancel {
+    [self reset];
+}
+
+- (void)reset {
+    // Invalidate the timer.
+    [self.timer invalidate];
+    
+    // Update the label's text to the final text.
+    self.text = self.originalText;
+    
+    // Remove the reference to the original text since we no longer need it.
+    self.originalText = nil;
+    
+    // Disable the user interaction so that the Label does not receive unnecessary hitTests.
+    // This will prevent the Label from blocking some other touch from passing through.
+    self.userInteractionEnabled = NO;
+    
+    // Clear out the array since we don't need the characters anymore.
+    [self.characters removeAllObjects];
 }
 
 @end
