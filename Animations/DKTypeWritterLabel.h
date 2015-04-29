@@ -36,9 +36,23 @@ typedef NS_ENUM(NSInteger, DKTypewritterLabelAnimationSpeed) {
 
 @interface DKTypeWritterLabel : UILabel
 
+/**
+ Sets the text of the label with a TypeWritter-like animation.
+ @param text The text to be set on the label.
+ @param animationSpeed A member of the DKTypewritterLabelAnimationSpeed enum, indicating the speed of the animation.
+ @param completion A block to be executed after the label TypeWritter animation has completed.
+ */
 - (void)setText:(NSString *)text
-       animated:(BOOL)animated
-withAnimationSpeed:(DKTypewritterLabelAnimationSpeed)animationSpeed
+     withAnimationSpeed:(DKTypewritterLabelAnimationSpeed)animationSpeed
+             completion:(void (^)())completion;
+
+/**
+ Sets the text of the label with a TypeWritter-like animation.
+ @param text The text to be set on the label.
+ @param customAnimationSpeed The speed in which to animate the TypeWritter animation.
+ @param completion A block to be executed after the label TypeWritter animation has completed.
+ */
+- (void)setText:(NSString *)text withCustomAnimationSpeed:(CGFloat)animationSpeed
      completion:(void (^)())completion;
 
 @end

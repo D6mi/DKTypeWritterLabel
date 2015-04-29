@@ -26,8 +26,8 @@
 
 #import "DKTypeWritterLabel.h"
 
-#define TYPEWRITTER_SPEED_VERY_FAST 0.025
-#define TYPEWRITTER_SPEED_FAST 0.05
+#define TYPEWRITTER_SPEED_VERY_FAST 0.02
+#define TYPEWRITTER_SPEED_FAST 0.45
 #define TYPEWRITTER_SPEED_NORMAL 0.08
 #define TYPEWRITTER_SPEED_SLOW 0.2
 #define TYPEWRITTER_SPEED_VERY_SLOW 0.4
@@ -37,7 +37,7 @@ typedef void(^AnimationBlock)(void);
 
 @interface DKTypeWritterLabel ()
 
-@property (weak, nonatomic) NSString *originalText;
+@property (strong, nonatomic) NSString *originalText;
 @property (strong, nonatomic) NSMutableArray *characters;
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -47,7 +47,7 @@ typedef void(^AnimationBlock)(void);
 
 @implementation DKTypeWritterLabel
 
-- (void)setText:(NSString *)text animated:(BOOL)animated withAnimationSpeed:(DKTypewritterLabelAnimationSpeed)animationSpeed completion:(void (^)())completion {
+- (void)setText:(NSString *)text withAnimationSpeed:(DKTypewritterLabelAnimationSpeed)animationSpeed completion:(void (^)())completion {
     [super setText:@""];
     
     self.userInteractionEnabled = YES;
@@ -70,6 +70,32 @@ typedef void(^AnimationBlock)(void);
     }
     
     [self initiateSequentialSetTextWithAnimationSpeed:animationSpeed];
+}
+
+- (void)setText:(NSString *)text withCustomAnimationSpeed:(CGFloat)animationSpeed
+     completion:(void (^)())completion {
+    [super setText:@""];
+    
+    self.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancel)];
+    [self addGestureRecognizer:tapRecognizer];
+    
+    self.originalText = text;
+    self.animationBlock = completion;
+    
+    if(self.timer) {
+        [self.timer invalidate];
+    }
+    
+    self.characters = [NSMutableArray arrayWithCapacity:[text length]];
+    
+    for(int index = 0; index < [text length]; index++) {
+        NSString *character = [text substringWithRange:NSMakeRange(index, 1)];
+        [self.characters addObject:character];
+    }
+    
+    [self initiateSequentialSetTextWithCustomAnimationSpeed:animationSpeed];
 }
 
 - (void)initiateSequentialSetTextWithAnimationSpeed:(DKTypewritterLabelAnimationSpeed)animationSpeed {
@@ -95,8 +121,11 @@ typedef void(^AnimationBlock)(void);
             break;
     }
     
-    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:speed target:self selector:@selector(sequentialSetText) userInfo:nil repeats:YES];
+}
+
+- (void)initiateSequentialSetTextWithCustomAnimationSpeed:(CGFloat)animationSpeed {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:animationSpeed target:self selector:@selector(sequentialSetText) userInfo:nil repeats:YES];
 }
 
 /**
@@ -122,15 +151,15 @@ typedef void(^AnimationBlock)(void);
 }
 
 - (void)cancel {
+    // Update the label's text to the final text.
+    self.text = self.originalText;
+    
     [self reset];
 }
 
 - (void)reset {
     // Invalidate the timer.
     [self.timer invalidate];
-    
-    // Update the label's text to the final text.
-    self.text = self.originalText;
     
     // Remove the reference to the original text since we no longer need it.
     self.originalText = nil;
@@ -142,5 +171,6 @@ typedef void(^AnimationBlock)(void);
     // Clear out the array since we don't need the characters anymore.
     [self.characters removeAllObjects];
 }
+
 
 @end

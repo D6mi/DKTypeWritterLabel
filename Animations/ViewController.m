@@ -49,7 +49,6 @@
     NSInteger randomSpeed = arc4random() % 5;
     
     [self.testLabel setText:[self.texts objectAtIndex:randomIndex]
-                   animated:YES
          withAnimationSpeed:self.animationsSpeed
                  completion:^{
                      NSLog(@"%@ is logging from within.", [self class]);
@@ -57,21 +56,17 @@
     
     randomIndex = arc4random() % [self.texts count];
     randomSpeed = arc4random() % 5;
-    [self.testLabel2 setText:[self.texts objectAtIndex:randomIndex]
-                   animated:YES
-         withAnimationSpeed:randomSpeed
-                 completion:^{
-                     NSLog(@"%@ is logging from within.", [self class]);
-                 }];
+    [self.testLabel2 setText:[self.texts objectAtIndex:randomIndex] withCustomAnimationSpeed:0.3
+                  completion:^{
+                      NSLog(@"%@ is logging from within.", [self class]);
+                  }];
     
     randomIndex = arc4random() % [self.texts count];
     randomSpeed = arc4random() % 5;
-    [self.testLabel3 setText:[self.texts objectAtIndex:randomIndex]
-                   animated:YES
-         withAnimationSpeed:randomSpeed
-                 completion:^{
-                     NSLog(@"%@ is logging from within.", [self class]);
-                 }];
+    [self.testLabel3 setText:[self.texts objectAtIndex:randomIndex] withCustomAnimationSpeed:0.001
+                  completion:^{
+                      NSLog(@"%@ is logging from within.", [self class]);
+                  }];
 }
 
 - (void)openSpeedPicker {
